@@ -30,15 +30,16 @@
       <a href="#"><font-awesome-icon icon="fa-solid fa-user" /></a>
       <a href="#">Cart(0)</a>
       <button :class="['phone_menu', { active: menuIsShow }]" @click="toggleMenu">
-        <font-awesome-icon :icon="`fa-solid ${menuIsShow ? 'fa-xmark' : 'fa-bars'}`" />
+        <font-awesome-icon :icon="iconName" />
       </button>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 const menuIsShow = ref(false);
+const iconName = computed(() => menuIsShow.value ? 'fa-solid fa-xmark' : 'fa-solid fa-bars')
 
 const toggleMenu = () => {
   menuIsShow.value = !menuIsShow.value;
