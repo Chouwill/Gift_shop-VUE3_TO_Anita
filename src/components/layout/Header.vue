@@ -2,8 +2,8 @@
   <header>
     <div class="search">
       <div class="search_box">
-        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
-        <input type="search" class="search_input" />
+        <font-awesome-icon class="search_icon" icon="fa-solid fa-magnifying-glass" />
+        <input type="search" class="search_input" placeholder="Search" />
       </div>
     </div>
     <nav class="logo_menu">
@@ -88,14 +88,27 @@ header {
 .search {
   display: flex;
   align-items: center;
+  justify-content: center;
   .search_box {
-    &:focus {
-      border-bottom: 10px solid #000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid transparent;
+    &:focus, &:hover {
+      border-bottom-color: #000;
+    }
+    .search_icon {
+      font-size: 1.2rem;
     }
     .search_input {
       border: none;
+      padding: 8px 4px;
       &:focus {
         outline: none;
+      }
+      &::placeholder {
+        color: #000;
+        font-size: 1.2rem;
       }
     }
     &:focus-within {
