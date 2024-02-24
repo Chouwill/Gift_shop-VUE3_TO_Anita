@@ -28,7 +28,7 @@
     </nav>
     <div class="member">
       <a href="#"><font-awesome-icon icon="fa-solid fa-user" class="search_icon" /></a>
-      <router-link to="/shoppingcart">Cart(0)</router-link>
+      <router-link to="/shoppingcart">Cart({{ cartNum }})</router-link>
       <!-- <button
         :class="['phone_menu', { active: menuIsShow }]"
         @click="toggleMenu"
@@ -53,6 +53,11 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { useCartStore } from '../../stores/cart';
+
+const cart = useCartStore();
+
+const cartNum = computed(() => cart.cartNum)
 
 const menuIsShow = ref(false);
 // const iconName = computed(() =>
