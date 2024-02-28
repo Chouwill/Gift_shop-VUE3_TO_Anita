@@ -1,22 +1,3 @@
-<template>
-  <div id="app">
-    <h2>Sale</h2>
-    <h4>
-      This is your category description. It’s a great place to tell customers
-      what this category is about, connect with your audience and draw attention
-      to your products.
-    </h4>
-
-    <ul v-if="state1.products.length" class="product_list">
-      <li v-for="product in state1.products" :key="product.id">
-        <img :src="product.imageUrl" :alt="product.title" width="299" />
-        {{ product.title }}
-        <button @click="addCart(product)">加入購物車</button>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script setup>
 import { reactive } from "vue";
 import { getProducts } from "../apis/product";
@@ -48,30 +29,53 @@ onMounted(async () => {
 });
 </script>
 
+<template>
+  <div class="page-wrapper">
+    <header class="page-header">
+      <h2 class="page-header__title">Sale</h2>
+      <p class="page-header__describe">This is your category description. It’s a great place to tell customers
+      what this category is about, connect with your audience and draw attention
+      to your products.</p>
+    </header>
+
+    <ul v-if="state1.products.length" class="product_list">
+      <li v-for="product in state1.products" :key="product.id">
+        <img :src="product.imageUrl" :alt="product.title" />
+        {{ product.title }}
+        <button @click="addCart(product)">加入購物車</button>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-#app {
-  width: 100%;
-  border: 5px solid greenyellow;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .product_list {
-    max-width: 60%;
+@import "../assets/scss/media";
+.product_list {
+    width: 100%;
+    padding: 0 24px;
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 10vh;
     li {
+      width: calc((100% - 30px) / 3);
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 5px solid red;
+      // border: 5px solid red;
       flex-direction: column;
+      @include pad {
+        width: calc((100% - 15px) / 2);
+      }
+      @include mobile {
+        width: 100%;
+      }
       img{
-        max-width: 45%;
-        border: 5px solid goldenrod;
+        width: 100%;
+        height: 300px;
         margin: 10px 0;
+        object-fit: cover;
       }
       button{
         padding: 15px 15px;
@@ -79,5 +83,4 @@ onMounted(async () => {
       }
     }
   }
-}
 </style>
