@@ -41,7 +41,8 @@ onMounted(async () => {
     <ul v-if="state1.products.length" class="product_list">
       <li v-for="product in state1.products" :key="product.id">
         <img :src="product.imageUrl" :alt="product.title" />
-        {{ product.title }}
+        <h4>{{ product.title }}</h4>
+        <span>$ {{ product.price }}</span>
         <button @click="addCart(product)">加入購物車</button>
       </li>
     </ul>
