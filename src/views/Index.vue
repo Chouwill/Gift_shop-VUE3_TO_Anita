@@ -23,7 +23,15 @@
         <a>
           <font-awesome-icon icon="fa-solid fa-less-than" />
         </a>
-        <ul class="picture_builder">
+        <Carousel :imgs="products">
+          <template #default="{data}">
+            <img :src="data.imageUrl" alt="" />
+            <h4>{{ data.title }}</h4>
+            <span>{{ data.price }}</span>
+          </template>
+        </Carousel>
+
+        <!-- <ul class="picture_builder">
           <li>
             <img src="https://picsum.photos/170/170/?random=1" />
             <p>Patterned Socks</p>
@@ -50,7 +58,7 @@
             <p>Patterned Socks</p>
             <p>$9.99</p>
           </li>
-        </ul>
+        </ul> -->
         <a>
           <font-awesome-icon icon="fa-solid fa-greater-than" />
         </a>
@@ -58,7 +66,7 @@
     </div>
     <div class="advertisemen"></div>
 
-    <div class="square_box">
+    <div class="square_box" style="display:none">
       <h2>Home & Living Essentials</h2>
       <div class="box_column">
         <div class="commodity_img">
@@ -118,6 +126,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import axios from 'axios'
 import Carousel from '../components/Carousel.vue';
 
 const looksImages = [
@@ -131,6 +141,26 @@ const looksImages = [
   'https://picsum.photos/210/210/?random=18',
   'https://picsum.photos/210/210/?random=19',
 ]
+
+const products = ref([])
+
+const fetchProducts = async () => {
+  try {
+    const apiURL = `${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/products`;
+    const res = await axios.get(apiURL);
+    if (res.data && Array.isArray(res.data.products)) {
+      products.value = res.data.products.map(product => ({
+        title: product.title,
+        price: product.price,
+        imageUrl: product.imageUrl
+      }));
+    }
+  } catch(e) {
+    console.log(e)
+  }
+}
+
+fetchProducts()
 
 </script>
 

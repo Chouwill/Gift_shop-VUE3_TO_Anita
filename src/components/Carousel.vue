@@ -33,9 +33,11 @@ defineProps({
 
 <template>
   <Carousel v-bind="settings" :breakpoints="breakpoints">
-    <Slide v-for="img in imgs" :key="img">
+    <Slide v-for="(img, index) in imgs" :key="index">
       <div class="carousel__item">
-        <img :src="img" alt="" />
+        <slot :data="img">
+          <img :src="img" alt="" />
+        </slot>
       </div>
     </Slide>
 
