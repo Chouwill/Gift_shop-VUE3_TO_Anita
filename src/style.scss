@@ -1,3 +1,11 @@
+// reset
 @import "./assets/css/reset.css";
+
+// 第三方css
+@import "vue3-carousel/dist/carousel.css";
+
+// mixin、css
 @import "./assets/scss/media";
+
+// 客製化
 @import "./assets/scss/global.scss";
