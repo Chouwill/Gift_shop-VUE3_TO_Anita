@@ -98,6 +98,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/media";
 * {
   list-style: none;
   box-sizing: border-box;
@@ -105,16 +106,21 @@
   color: #000;
 }
 footer {
-  background-color: #F1E4B8;
-  // display: flex;
-  // flex-wrap: wrap;
+  width: 100%;
+  background-color: #f1e4b8;
+  border: 2px solid green;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   .footer_menu {
     display: flex;
     width: 100%;
     padding: 50px 0;
-    background-color: #F1E4B8;
+    background-color: #f1e4b8;
     justify-content: space-evenly;
     align-items: center;
+    border: 5px solid goldenrod;
+    flex-wrap: wrap;
     .footer_column {
       h3 {
         // font-size: 30px;
@@ -149,35 +155,36 @@ footer {
           color: #000;
         }
       }
-      li > p{
+      li > p {
         color: red;
         padding: 0 0 10px;
       }
-      li{
+      li {
         padding: 0 0 10px;
-        input{
+        input {
           padding: 5px 10px;
           border-radius: 100px;
           border: 3px solid red;
           outline: none;
         }
-        button{
+        button {
           padding: 10px 25px;
           margin-left: 10px;
           background: #000;
           color: white;
           border-radius: 100px;
           font-weight: 700;
-          &:hover{
-            background-color: #F1E4B8;
+          &:hover {
+            background-color: #f1e4b8;
             color: #000;
           }
         }
       }
     }
   }
+  
   .footer_logo {
-    background-color: #F1E4B8;
+    background-color: #f1e4b8;
     h1 {
       font-size: 120px;
       text-align: center;
@@ -185,4 +192,17 @@ footer {
     }
   }
 }
+@media screen and (max-width: 768px){
+  footer{
+    // background-color: #000;
+    .footer_menu{
+      background-color: orchid;
+      .subscribe{
+        background-color: orange;
+        margin: 50px 0;
+      }
+    }
+  }
+}
+ 
 </style>

@@ -24,7 +24,7 @@
           <font-awesome-icon icon="fa-solid fa-less-than" />
         </a>
         <Carousel :imgs="products">
-          <template #default="{data}">
+          <template #default="{ data }">
             <img :src="data.imageUrl" alt="" />
             <h4>{{ data.title }}</h4>
             <span>{{ data.price }}</span>
@@ -66,7 +66,7 @@
     </div>
     <div class="advertisemen"></div>
 
-    <div class="square_box" style="display:none">
+    <div class="square_box" style="display: none">
       <h2>Home & Living Essentials</h2>
       <div class="box_column">
         <div class="commodity_img">
@@ -126,42 +126,43 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import axios from 'axios'
-import Carousel from '../components/Carousel.vue';
+import { ref } from "vue";
+import axios from "axios";
+import Carousel from "../components/Carousel.vue";
 
 const looksImages = [
-  'https://picsum.photos/210/210/?random=11',
-  'https://picsum.photos/210/210/?random=12',
-  'https://picsum.photos/210/210/?random=13',
-  'https://picsum.photos/210/210/?random=14',
-  'https://picsum.photos/210/210/?random=15',
-  'https://picsum.photos/210/210/?random=16',
-  'https://picsum.photos/210/210/?random=17',
-  'https://picsum.photos/210/210/?random=18',
-  'https://picsum.photos/210/210/?random=19',
-]
+  "https://picsum.photos/210/210/?random=11",
+  "https://picsum.photos/210/210/?random=12",
+  "https://picsum.photos/210/210/?random=13",
+  "https://picsum.photos/210/210/?random=14",
+  "https://picsum.photos/210/210/?random=15",
+  "https://picsum.photos/210/210/?random=16",
+  "https://picsum.photos/210/210/?random=17",
+  "https://picsum.photos/210/210/?random=18",
+  "https://picsum.photos/210/210/?random=19",
+];
 
-const products = ref([])
+const products = ref([]);
 
 const fetchProducts = async () => {
   try {
-    const apiURL = `${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/products`;
+    const apiURL = `${import.meta.env.VITE_APP_API}/api/${
+      import.meta.env.VITE_APP_PATH
+    }/products`;
     const res = await axios.get(apiURL);
     if (res.data && Array.isArray(res.data.products)) {
-      products.value = res.data.products.map(product => ({
+      products.value = res.data.products.map((product) => ({
         title: product.title,
         price: product.price,
-        imageUrl: product.imageUrl
+        imageUrl: product.imageUrl,
       }));
     }
-  } catch(e) {
-    console.log(e)
+  } catch (e) {
+    console.log(e);
   }
-}
+};
 
-fetchProducts()
-
+fetchProducts();
 </script>
 
 <style lang="scss" scoped>
@@ -171,7 +172,7 @@ fetchProducts()
   list-style: none;
   text-decoration: none;
 }
-.wrapper{
+.wrapper {
   max-width: 100%;
 }
 .introduction {
@@ -267,6 +268,10 @@ fetchProducts()
           border-radius: 100px;
         }
       }
+    }
+    img {
+      width: 100%;
+      height: 250px;
     }
   }
 }
