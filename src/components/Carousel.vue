@@ -2,7 +2,9 @@
   <Carousel v-bind="settings" :breakpoints="breakpoints">
     <Slide v-for="img in imgs" :key="img">
       <div class="carousel__item">
-        <img :src="img" alt="" />
+        <slot>
+          <img :src="img" alt="" />
+        </slot>
       </div>
     </Slide>
 

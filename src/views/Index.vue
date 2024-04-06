@@ -20,10 +20,14 @@
     <div class="shop_builder">
       <h3>Gifts up to $50</h3>
       <div class="shop_main_builder">
-        <a>
-          <font-awesome-icon icon="fa-solid fa-less-than" />
-        </a>
-        <ul class="picture_builder">
+        <Carousl :imgs="looksImages">
+          <template>
+            <img src="https://picsum.photos/170/170/?random=1" />
+            <p>Patterned Socks</p>
+            <p>$9.99</p>
+          </template>
+        </Carousl>
+        <!-- <ul class="picture_builder">
           <li>
             <img src="https://picsum.photos/170/170/?random=1" />
             <p>Patterned Socks</p>
@@ -50,10 +54,8 @@
             <p>Patterned Socks</p>
             <p>$9.99</p>
           </li>
-        </ul>
-        <a>
-          <font-awesome-icon icon="fa-solid fa-greater-than" />
-        </a>
+        </ul> -->
+
       </div>
     </div>
     <div class="advertisemen"></div>
