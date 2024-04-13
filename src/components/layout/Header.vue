@@ -8,24 +8,24 @@
     </div>
     <nav class="logo_menu">
       <h1><router-link to="/">JSY</router-link></h1>
-      <ul :class="['menu', { show: menuIsShow }]">
+      <ul :class="['menu', { show: menuIsShow }]" @click="clickItem">
         <li>
           <router-link to="/home">HOME</router-link>
           <!-- <Index /> -->
         </li>
-        <li>
-          <!-- <router-link to="/accessories">Accessories</router-link> -->
-        </li>
-        <li>
-          <!-- <router-link to="/stationery">Stationery</router-link> -->
+        <!-- <li>
+          <router-link to="/accessories">Accessories</router-link>
+        </li> -->
+        <!-- <li>
+          <router-link to="/stationery">Stationery</router-link>
 
-        </li>
+        </li> -->
         <li>
           <router-link to="/sale">Sale</router-link>
         </li>
-        <li>
-          <!-- <router-link to="/gift-card">Gift Card</router-link> -->
-        </li>
+        <!-- <li>
+          <router-link to="/gift-card">Gift Card</router-link>
+        </li> -->
       </ul>
     </nav>
     <div class="member">
@@ -70,6 +70,13 @@ const menuIsShow = ref(false);
 // const iconName = computed(() =>
 //   menuIsShow.value ? "fa-solid fa-xmark" : "fa-solid fa-bar"
 // );
+
+const clickItem = (e) => {
+  console.log(e.target.nodeName)
+  if (e.target.nodeName === 'A') {
+    menuIsShow.value = false
+  }
+}
 
 const toggleMenu = () => {
   menuIsShow.value = !menuIsShow.value;

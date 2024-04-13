@@ -20,7 +20,7 @@
     <div class="shop_builder">
       <h3>Gifts up to $50</h3>
       <div class="shop_main_builder">
-        
+
       </div>
     </div>
     <div class="advertisemen"></div>
@@ -125,11 +125,12 @@ const looksImages = [
   flex: 1;
   background-color: #f1e4b8;
   text-align: center;
-  padding: 150px 0;
+  padding: 150px 24px;
 
   h2 {
     font-size: 45px;
     font-weight: bolder;
+    margin-bottom: 24px;
   }
 
   p {
